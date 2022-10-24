@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 const FromComponent = () => {
   const [state, setState] = useState({
     title: "",
@@ -16,15 +18,20 @@ const FromComponent = () => {
   };
   const submitFrom = (e) => {
     e.preventDefault();
-    console.table({ title, content, author });
-    console.log("API = ", process.env.REACT_APP_API);
+    //console.table({ title, content, author });
+    //console.log("API = ", process.env.REACT_APP_API);
     axios
       .post(`${process.env.REACT_APP_API}/create`, { title, content, author })
       .then((response) => {
-        alert("Complete");
+        Swal.fire("Good job!", "Complete Create Content", "success");
+        setState({...state,title:"",content:"",author:""})
       })
       .catch((err) => {
-        console.log(err.response.data.err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "มีชื่อนี้แล้ว",
+        });
       });
   };
   return (
@@ -32,7 +39,7 @@ const FromComponent = () => {
       <Navbar />
       <div className="container p-5">
         <h1>Create Content</h1>
-        {JSON.stringify(state)}
+        {/* {JSON.stringify(state)} */}
         <form onSubmit={submitFrom}>
           <div className="form-group">
             <label for="exampleFormControlInput1">Name</label>

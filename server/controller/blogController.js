@@ -26,4 +26,11 @@ exports.create = (req,res)=>{
         }
         res.json(blog)
     })
+
+}
+
+exports.getAllBlogs=(req,res)=>{
+    Blogs.find({}).exec((err,blogs)=>{
+        res.json(blogs)
+    })
 }
