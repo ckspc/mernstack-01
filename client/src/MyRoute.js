@@ -1,15 +1,16 @@
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import FromComponent from "./components/FormComponent";
 
-import FromComponent from './components/FormComponent';
 const MyRoute = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-
-        <Route path="/create" exact component={FromComponent} />
+        <Route path="/" element={<App />} />
+        <Route path="/create" element={<FromComponent/>}></Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 };
 
