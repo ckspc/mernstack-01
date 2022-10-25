@@ -23,7 +23,13 @@ const Navbar = () => {
                 Create
               </a>
             </div>
+            <div className="navbar-nav">
+              <a className="nav-item nav-link active" href="/login">
+                Login
+              </a>
+            </div>
           </div>
+          
         </div>
       </nav>
     </div>
